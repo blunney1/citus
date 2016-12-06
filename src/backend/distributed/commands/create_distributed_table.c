@@ -120,7 +120,6 @@ master_create_distributed_table(PG_FUNCTION_ARGS)
 							  distributionMethod, INVALID_COLOCATION_ID);
 
 
-
 	PG_RETURN_VOID();
 }
 
@@ -206,8 +205,6 @@ CreateReferenceTable(Oid relationId)
 
 	/* now, create the shards */
 	CreateReferenceTableShards(relationId);
-
-	return;
 }
 
 
@@ -662,7 +659,7 @@ InsertIntoPgDistPartition(Oid relationId, char distributionMethod,
 	/* do not need to create distribution column string for reference tables */
 	if (distributionColumn != NULL)
 	{
-		Assert (distributionMethod != DISTRIBUTE_BY_ALL);
+		Assert(distributionMethod != DISTRIBUTE_BY_ALL);
 
 		distributionColumnString = nodeToString((Node *) distributionColumn);
 	}
